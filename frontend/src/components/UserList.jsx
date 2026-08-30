@@ -8,13 +8,45 @@ function UserList({ users }) {
     }
 
     return (
-        <div className="fixed top-44 right-6 bg-ink-900 border border-ink-700 rounded-lg p-3 w-48 z-10">
-            <p className="text-xs text-fog uppercase tracking-wide mb-2">Online now</p>
+        <div
+            className="
+                fixed top-44 right-6
+                bg-ink-900
+                border border-ink-700
+                rounded-lg
+                p-3
+                w-48
+                z-10
+
+                max-[1023px]:right-4
+
+                max-[767px]:
+                top-36
+                right-3
+                w-40
+                p-2.5
+            "
+        >
+            <p className="text-xs text-fog uppercase tracking-wide mb-2">
+                Online now
+            </p>
+
             <ul className="space-y-1.5">
                 {users.map((user) => (
-                    <li key={user.socketId} className="flex items-center gap-2 text-sm">
-                        <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: user.color }} />
-                        <span className="truncate">{user.name}</span>
+                    <li
+                        key={user.socketId}
+                        className="flex items-center gap-2 text-sm"
+                    >
+                        <span
+                            className="w-2 h-2 rounded-full flex-shrink-0"
+                            style={{
+                                backgroundColor: user.color,
+                            }}
+                        />
+
+                        <span className="truncate">
+                            {user.name}
+                        </span>
                     </li>
                 ))}
             </ul>

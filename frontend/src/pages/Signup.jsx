@@ -22,7 +22,10 @@ function Signup() {
             await signup(name, email, password);
             navigate("/dashboard");
         } catch (error) {
-            const message = error.response?.data?.message || "Something went wrong. Please try again.";
+            const message =
+                error.response?.data?.message ||
+                "Something went wrong. Please try again.";
+
             setErrorMessage(message);
         } finally {
             setIsSubmitting(false);
@@ -31,10 +34,18 @@ function Signup() {
 
     return (
         <AuthLayout>
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form
+                onSubmit={handleSubmit}
+                className="space-y-5 max-[479px]:space-y-4"
+            >
                 <div>
-                    <h2 className="font-display text-2xl">Create your account</h2>
-                    <p className="text-fog text-sm mt-1">Start your first board in a minute.</p>
+                    <h2 className="font-display text-2xl max-[479px]:text-xl">
+                        Create your account
+                    </h2>
+
+                    <p className="text-fog text-sm mt-1">
+                        Start your first board in a minute.
+                    </p>
                 </div>
 
                 {errorMessage && (
@@ -44,7 +55,10 @@ function Signup() {
                 )}
 
                 <div>
-                    <label className="block text-sm text-fog mb-1.5">Name</label>
+                    <label className="block text-sm text-fog mb-1.5">
+                        Name
+                    </label>
+
                     <input
                         type="text"
                         value={name}
@@ -55,7 +69,10 @@ function Signup() {
                 </div>
 
                 <div>
-                    <label className="block text-sm text-fog mb-1.5">Email</label>
+                    <label className="block text-sm text-fog mb-1.5">
+                        Email
+                    </label>
+
                     <input
                         type="email"
                         value={email}
@@ -66,7 +83,10 @@ function Signup() {
                 </div>
 
                 <div>
-                    <label className="block text-sm text-fog mb-1.5">Password</label>
+                    <label className="block text-sm text-fog mb-1.5">
+                        Password
+                    </label>
+
                     <input
                         type="password"
                         value={password}
@@ -86,7 +106,10 @@ function Signup() {
 
                 <p className="text-sm text-fog text-center">
                     Already have an account?{" "}
-                    <Link to="/login" className="text-accent hover:underline">
+                    <Link
+                        to="/login"
+                        className="text-accent hover:underline"
+                    >
                         Log in
                     </Link>
                 </p>

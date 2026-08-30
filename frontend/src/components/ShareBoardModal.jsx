@@ -18,7 +18,10 @@ function ShareBoardModal({ board, onClose, onInvite }) {
             await onInvite(board._id, email, role);
             onClose();
         } catch (error) {
-            const message = error.response?.data?.message || "Could not send the invite. Please try again.";
+            const message =
+                error.response?.data?.message ||
+                "Could not send the invite. Please try again.";
+
             setErrorMessage(message);
         } finally {
             setIsSubmitting(false);
@@ -26,12 +29,35 @@ function ShareBoardModal({ board, onClose, onInvite }) {
     };
 
     return (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50">
-            <div className="bg-ink-900 border border-ink-700 rounded-lg p-6 w-full max-w-sm">
-                <h2 className="font-display text-xl mb-1">Share &quot;{board.title}&quot;</h2>
-                <p className="text-fog text-sm mb-4">Invite someone by their account email.</p>
+        <div
+            className="
+                fixed inset-0 bg-black/60
+                flex items-center justify-center
+                p-4 z-50
+                max-[479px]:p-3
+            "
+        >
+            <div
+                className="
+                    bg-ink-900
+                    border border-ink-700
+                    rounded-lg
+                    p-6
+                    w-full
+                    max-w-sm
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                    max-[479px]:p-4
+                "
+            >
+                <h2 className="font-display text-xl mb-1 max-[479px]:text-lg">
+                    Share &quot;{board.title}&quot;
+                </h2>
+
+                <p className="text-fog text-sm mb-4">
+                    Invite someone by their account email.
+                </p>
+
+                <form className="space-y-4" onSubmit={handleSubmit}>
                     {errorMessage && (
                         <p className="bg-cursor-coral/10 text-cursor-coral text-sm rounded-lg px-3 py-2 border border-cursor-coral/30">
                             {errorMessage}
@@ -39,7 +65,10 @@ function ShareBoardModal({ board, onClose, onInvite }) {
                     )}
 
                     <div>
-                        <label className="block text-sm text-fog mb-1.5">Email</label>
+                        <label className="block text-sm text-fog mb-1.5">
+                            Email
+                        </label>
+
                         <input
                             type="email"
                             value={email}
@@ -50,14 +79,21 @@ function ShareBoardModal({ board, onClose, onInvite }) {
                     </div>
 
                     <div>
-                        <label className="block text-sm text-fog mb-1.5">Role</label>
+                        <label className="block text-sm text-fog mb-1.5">
+                            Role
+                        </label>
+
                         <select
                             value={role}
                             onChange={(e) => setRole(e.target.value)}
                             className="w-full bg-ink-800 border border-ink-700 rounded-lg px-3 py-2.5 outline-none focus:border-accent transition-colors"
                         >
-                            <option value="editor">Editor - can draw and edit</option>
-                            <option value="viewer">Viewer - can only view</option>
+                            <option value="editor">
+                                Editor - can draw and edit
+                            </option>
+                            <option value="viewer">
+                                Viewer - can only view
+                            </option>
                         </select>
                     </div>
 
@@ -65,14 +101,34 @@ function ShareBoardModal({ board, onClose, onInvite }) {
                         <button
                             type="button"
                             onClick={onClose}
-                            className="flex-1 bg-ink-800 hover:bg-ink-700 border border-ink-700 rounded-lg py-2.5 text-sm transition-colors"
+                            className="
+                                flex-1
+                                bg-ink-800
+                                hover:bg-ink-700
+                                border border-ink-700
+                                rounded-lg
+                                py-2.5
+                                text-sm
+                                transition-colors
+                            "
                         >
                             Cancel
                         </button>
+
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="flex-1 bg-accent hover:bg-accent-600 disabled:opacity-50 rounded-lg py-2.5 text-sm font-medium transition-colors"
+                            className="
+                                flex-1
+                                bg-accent
+                                hover:bg-accent-600
+                                disabled:opacity-50
+                                rounded-lg
+                                py-2.5
+                                text-sm
+                                font-medium
+                                transition-colors
+                            "
                         >
                             {isSubmitting ? "Inviting..." : "Invite"}
                         </button>

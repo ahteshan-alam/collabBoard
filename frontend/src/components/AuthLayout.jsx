@@ -13,19 +13,23 @@ function AuthLayout({ children }) {
                     <h1 className="font-display text-4xl leading-tight">
                         Draw together, in real time.
                     </h1>
+
                     <p className="text-fog mt-3 max-w-sm">
                         Every stroke, cursor, and idea syncs the instant it happens.
                     </p>
                 </div>
 
-                <p className="text-xs text-fog">CollabBoard &middot; a MERN + Socket.IO project</p>
+                <p className="text-xs text-fog">
+                    CollabBoard &middot; a MERN + Socket.IO project
+                </p>
             </div>
 
-            <div className="flex-1 flex items-center justify-center p-8">
+            <div className="flex-1 flex items-center justify-center p-8 max-[479px]:p-4">
                 <div className="w-full max-w-sm">
-                    <div className="lg:hidden mb-8">
+                    <div className="lg:hidden mb-8 max-[479px]:mb-6">
                         <Logo />
                     </div>
+
                     {children}
                 </div>
             </div>
