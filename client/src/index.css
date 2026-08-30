@@ -1,0 +1,12 @@
+/* These three lines pull in Tailwind's base styles, component classes, and utility
+   classes (things like "flex", "p-4", "bg-ink-900"). This is the only .css file
+   the project needs - everything else is styled with Tailwind classes in the JSX. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-ink-950 text-mist font-sans antialiased;
+    }
+}
