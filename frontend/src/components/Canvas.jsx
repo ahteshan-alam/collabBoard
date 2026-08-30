@@ -38,6 +38,10 @@ function Canvas({
     }, []);
 
     const handleMouseDown = (e) => {
+        if (e.evt) {
+            e.evt.preventDefault();
+        }
+
         if (readOnly) {
             return;
         }
@@ -153,6 +157,10 @@ function Canvas({
     };
 
     const handleMouseMove = (e) => {
+        if (e.evt) {
+            e.evt.preventDefault();
+        }
+
         const stage = e.target.getStage();
         const pointerPosition = stage.getPointerPosition();
 
@@ -228,7 +236,11 @@ function Canvas({
         onUpdateElement(updatedElement);
     };
 
-    const handleMouseUp = () => {
+    const handleMouseUp = (e) => {
+        if (e?.evt) {
+            e.evt.preventDefault();
+        }
+
         setIsDrawing(false);
         setCurrentElementId(null);
     };
@@ -241,6 +253,9 @@ function Canvas({
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
+            onTouchStart={handleMouseDown}
+            onTouchMove={handleMouseMove}
+            onTouchEnd={handleMouseUp}
         >
             <Layer>
                 {elements
@@ -337,7 +352,11 @@ function findElementAtPoint(elements, mouseX, mouseY) {
         ) {
             const points = element.points;
 
-            for (let j = 0; j < points.length - 2; j += 2) {
+            for (
+                let j = 0;
+                j < points.length - 2;
+                j += 2
+            ) {
                 const x1 = points[j];
                 const y1 = points[j + 1];
                 const x2 = points[j + 2];
